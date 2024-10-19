@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <style>
+        /* Reset default browser styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fb;
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        /* Heading styling */
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: #2c3e50;
+        }
+
+        /* Subheading */
+        h2 {
+            font-size: 2rem;
+            color: #34495e;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Post list container */
+        .post-list {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Individual post item */
+        .post-item {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-bottom: 1px solid #e1e1e1;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hover effect for post item */
+        .post-item:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Post title link styling */
+        .post-item a {
+            font-size: 1.7rem;
+            color: #2980b9;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+
+        /* Hover effect for post title */
+        .post-item a:hover {
+            color: #3498db;
+        }
+
+        /* Post date styling */
+        .post-item p {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+
+        /* Button or link styling */
+        a {
+            display: inline-block;
+            padding: 10px;
+        }
+
+        /* Responsive adjustments for mobile screens */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .post-item a {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main heading -->
+    <h1>5 Tips For Web Developer Beginners</h1>
+    
+    <!-- Post list section -->
+    <h2>Recent Posts</h2>
+    <div class="post-list">
+        <!-- Loop through all posts -->
+        {% for post in allposts %}
+        <div class="post-item">
+            <!-- Post title with link -->
+            <a href="{% url 'single_post' post.id %}">{{ post.title }}</a>
+            <!-- Post creation date -->
+            <p>Created on: {{ post.created_at }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
